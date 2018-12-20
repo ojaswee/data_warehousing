@@ -32,13 +32,13 @@ EOF
               time mongo 127.0.0.1/cancer <<EOF
 db.cosmic_itest.count();
 db.cosmic_itest.deleteMany({});
-EOF
+EOFdb.cosmic.
 } &>> 04_delete_comparison_result_mongo.txt
 
 {
 # first create collection and load data
 mongo cancer --eval 'db.cosmic_itest.drop()'
-              time mongoimport --db cancer --collection cosmic_itest --type csv --headerline --file /home/ojaswee/masters_project/01_data/cosmic_100k.csv
+              time mongoimport --db cancer --collection cosmic_itest --type csv --headerline --file /home/ojaswee/masters_project/01_data/CosmicCodingMuts.csv
 } &>> 03_insert_comparison_result_mongo.txt
 
 #then count and delete

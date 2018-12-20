@@ -1,47 +1,51 @@
 #!/bin/bash
 #before starting remove profile
-rm -f 02_index_comparison_result_mysql.txt
+# rm -f 02_index_comparison_result_mysql.txt
 rm -f 02_index_comparison_result_mongo.txt
 
-for i in `seq 1 3`;
-        do
-              echo "-------- $i "
-              {
-              time  mysql -u root -ppassword cancer <<EOF
-RESET QUERY CACHE;
-select * from cosmic where chromosome=20 and position=96030 and refe='G' and alt='A';
-EOF
-} &>> 02_index_comparison_result_mysql.txt
+# for i in `seq 1 3`;
+#         do
+#               echo "-------- $i "
+#               {
+#               time  mysql -u root -pmain cancer <<EOF
+# RESET QUERY CACHE;
+# select * from cosmic where chromosome=20 and position=96030 and refe='G' and alt='A';
+# EOF
+# } &>> 02_index_comparison_result_mysql.txt
+#
+# {
+# time mysql -u root -pmain cancer <<EOF
+# RESET QUERY CACHE;
+# select * from cosmic2 where chromosome=20 and position=96030 and refe='G' and alt='A';
+# EOF
+# } &>> 02_index_comparison_result_mysql.txt
+#
+# {
+# time mysql -u root -pmain cancer <<EOF
+# RESET QUERY CACHE;
+# select * from cosmic3 where chromosome=20 and position=96030 and refe='G' and alt='A';
+# EOF
+# } &>> 02_index_comparison_result_mysql.txt
+#
+#
+# {
+# time mysql -u root -pmain cancer <<EOF
+# RESET QUERY CACHE;
+# select * from cosmic4 where chromosome=20 and position=96030 and refe='G' and alt='A';
+# EOF
+# } &>> 02_index_comparison_result_mysql.txt
+#
+# {
+# time mysql -u root -pmain cancer <<EOF
+# RESET QUERY CACHE;
+# select * from cosmic5 where chromosome=20 and position=96030 and refe='G' and alt='A';
+# EOF
+# } &>> 02_index_comparison_result_mysql.txt
+#
+# done
 
-{
-time mysql -u root -ppassword cancer <<EOF
-RESET QUERY CACHE;
-select * from cosmic2 where chromosome=20 and position=96030 and refe='G' and alt='A';
-EOF
-} &>> 02_index_comparison_result_mysql.txt
-
-{
-time mysql -u root -ppassword cancer <<EOF
-RESET QUERY CACHE;
-select * from cosmic3 where chromosome=20 and position=96030 and refe='G' and alt='A';
-EOF
-} &>> 02_index_comparison_result_mysql.txt
-
-
-{
-time mysql -u root -ppassword cancer <<EOF
-RESET QUERY CACHE;
-select * from cosmic4 where chromosome=20 and position=96030 and refe='G' and alt='A';
-EOF
-} &>> 02_index_comparison_result_mysql.txt
-
-{
-time mysql -u root -ppassword cancer <<EOF
-RESET QUERY CACHE;
-select * from cosmic5 where chromosome=20 and position=96030 and refe='G' and alt='A';
-EOF
-} &>> 02_index_comparison_result_mysql.txt
-
+#after completion
+#cat 02_index_comparison_result_mysql.txt | grep 'real'
 
 ###### mongodb
 for i in `seq 1 3`;
